@@ -29,9 +29,7 @@ $ more logs/service1.log
 
 ## Usage
 
-**Workspace** is located under **InternshipsApp** folder.
-
-This stack contains two different containers
+This stack contains two containers
 
 ```version: '3.8'
 services:
