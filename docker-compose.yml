@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  django:
+    image: django-service1
+    build:
+      dockerfile: ./application_django/Dockerfile
+      context: .
+    env_file:
+      -  ./application_django/.env
+    ports:
+      - "7539:7539"
+    volumes:
+      - ./application_django/devops:/application_django
+    networks:
+        dev_ops_ex1:
+          ipv4_address: 172.21.0.2
+  nodejs:
+    image: nodejs-service2
+    build:
+      dockerfile: ./application_node_js/Dockerfile
+      context: .
+    env_file:
+      -  ./application_node_js/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./application_node_js:/application_node_js
+    depends_on:
+        django:
+          condition: service_healthy
+    networks:
+       dev_ops_ex1:
+          ipv4_address: 172.21.0.3
+networks:
+  dev_ops_ex1:
+    name: devops_exercise_one
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          ip_range: 172.21.0.0/24
+    external: false #internal network
+volumes:
+  static_volume: null
