@@ -6,8 +6,7 @@ ADD /application_node_js/package.json /application_node_js/package-lock.json /ap
 #add all application code to the node.js docker container
 ADD /application_node_js/index.js /application_node_js/
 #installing all code dependencies
-RUN mkdir logs
-ADD /logs/service2.log /application_node_js/logs/
+ADD ./logs/service1.log ./application_node_js/logs/
 RUN npm install
 #run the node.js server
 CMD [ "npm", "start" ]

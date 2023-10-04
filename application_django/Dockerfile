@@ -18,8 +18,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 # coping all the django web app file system to its respective container
 COPY ./application_django/devops .
-RUN mkdir logs
-ADD ./logs/service1.log /application_django/logs/
+COPY ./logs/service1.log /application_django/logs/
 #permissions for our script to run
 RUN chmod +x init.sh
 #entrypoint for our containarized web application run

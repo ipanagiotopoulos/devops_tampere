@@ -1,8 +1,5 @@
 #!/bin/sh
 # Make migrations if required
-echo "here"
-echo $MAKE_MIGRATIONS
-echo "here"
 if [ $MAKE_MIGRATIONS = "True" ]; then
   echo "Making migrations..."
   python manage.py makemigrations

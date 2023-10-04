@@ -11,6 +11,7 @@ services:
       - "7539:7539"
     volumes:
       - ./application_django/devops:/application_django
+      - ./logs/service2.log://application_django/logs/service2.log
     networks:
         dev_ops_ex1:
           ipv4_address: 172.21.0.2
@@ -25,9 +26,9 @@ services:
       - "8000:8000"
     volumes:
       - ./application_node_js:/application_node_js
+      - ./logs/service1.log:/application_node_js/logs/service1.log
     depends_on:
-        django:
-          condition: service_healthy
+        - django
     networks:
        dev_ops_ex1:
           ipv4_address: 172.21.0.3
