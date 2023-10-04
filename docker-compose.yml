@@ -2,6 +2,7 @@ version: '3.8'
 services:
   django:
     image: django-service1
+    container_name: yiannis_pana_django_devops
     build:
       dockerfile: ./application_django/Dockerfile
       context: .
@@ -17,6 +18,7 @@ services:
           ipv4_address: 172.21.0.2
   nodejs:
     image: nodejs-service2
+    container_name: yiannis_pana_nodejs_devops
     build:
       dockerfile: ./application_node_js/Dockerfile
       context: .
@@ -34,7 +36,7 @@ services:
           ipv4_address: 172.21.0.3
 networks:
   dev_ops_ex1:
-    name: devops_exercise_one
+    name: devops_yiannis_pana_exercise_one
     ipam:
       config:
         - subnet: 172.21.0.0/16
